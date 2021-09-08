@@ -1,8 +1,10 @@
-import React, { useState, useCallback } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import Cookies from 'universal-cookie';
 import authImg from 'src/assets/chat2.png';
+import * as api from 'src/api';
 // import { useDropzone } from 'react-dropzone';
+
+const cookies = new Cookies();
 
 const initialState = {
     fullName: '',
@@ -55,9 +57,23 @@ const Auth = () => {
 
     const switchMode = () => setIsSignUp((prevIsSignUp) => !prevIsSignUp);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(form);
+        const { data: { token, userId, hashedPassword } } = await api.auth(isSignUp, form);
+
+        // Store data inside cookies.
+        cookies.set('token', token);
+        cookies.set('userId', userId);
+        cookies.set('fullName', form.fullName);
+        cookies.set('username', form.username);
+
+        if (isSignUp) {
+            cookies.set('phoneNumber', form.phoneNumber);
+            cookies.set('avatar', form.avatar);
+            cookies.set('hashedPassword', hashedPassword);
+        }
+
+        window.location.reload();
     }
 
     return (
@@ -102,9 +118,9 @@ const Auth = () => {
                         )}
                         {isSignUp && (
                             <div className="auth__form-container_fields-content_input">
-                                <label htmlFor="avatarURL">Avatar URL</label>
+                                <label htmlFor="avatar">Avatar URL</label>
                                 <input
-                                    name="avatarURL"
+                                    name="avatar"
                                     type="text"
                                     placeholder="Avatar URL"
                                     onChange={handleChange}

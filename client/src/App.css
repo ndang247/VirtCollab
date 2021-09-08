@@ -1824,3 +1824,18 @@ div.rta__autocomplete.str-chat__emojisearch {
     display: none;
   }
 }
+
+/* For if using MessageSimple. */
+/* .str-chat__message.str-chat__message--me.str-chat__message-simple.str-chat__message-simple--me.str-chat__message--regular
+  .str-chat__avatar {
+  display: none;
+}
+
+.str-chat__message.str-chat__message--me.str-chat__message-simple.str-chat__message-simple--me.str-chat__message--reply
+  .str-chat__avatar {
+  display: none;
+}
+
+.str-chat__list {
+  padding: 0 30px;
+} */

@@ -16,7 +16,7 @@ export const register = async (req, res) => {
 
         // Create a random crypto string with 16 hex.
         const userId = crypto.randomBytes(16).toString('hex');
-
+        // console.log(userId);
         // Connection to stream chat.
         const serverClient = connect(api_key, api_secret, api_id);
 
@@ -42,9 +42,7 @@ export const login = async (req, res) => {
 
     // TODO: for future improvement could use email to query instead of username
     const { users } = await client.queryUsers({ name: username });
-
-    console.log(users);
-    
+    // console.log(users);
     if (!users.length) return res.status(404).json({ message: 'User not found' });
 
     const isSuccess = await validatePassword(password, users[0].hashedPassword);
