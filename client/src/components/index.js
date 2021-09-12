@@ -13,3 +13,5 @@ export { default as SideBar } from './sidebar/SideBar';
 export { default as CompanyHeader } from './header/CompanyHeader';
 
 export { default as Auth } from './auth/Auth';
+
+export { default as UserList } from './users/UserList';

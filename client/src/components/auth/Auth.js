@@ -59,12 +59,12 @@ const Auth = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { data: { token, userId, hashedPassword } } = await api.auth(isSignUp, form);
+        const { data: { token, userId, hashedPassword, fullName } } = await api.auth(isSignUp, form);
 
         // Store data inside cookies.
         cookies.set('token', token);
         cookies.set('userId', userId);
-        cookies.set('fullName', form.fullName);
+        cookies.set('fullName', fullName);
         cookies.set('username', form.username);
 
         if (isSignUp) {
@@ -186,7 +186,7 @@ const Auth = () => {
                     <div className="auth__form-container_fields-account">
                         <p>
                             {isSignUp ? "Already have an account?" : "Don't have an account?"}
-                            <span onClick={switchMode}>{isSignUp ? "Sign Up" : "Sign In"}</span>
+                            <span onClick={switchMode}>{isSignUp ? "Sign In" : "Sign Up"}</span>
                         </p>
                     </div>
                 </div>
