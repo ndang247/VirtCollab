@@ -1,11 +1,11 @@
 import React from 'react';
 // TODO: Replace MessageTeam with MessageSimple
-import { Channel, useChatContext, MessageTeam } from 'stream-chat-react';
+import { Channel, MessageTeam } from 'stream-chat-react';
 import { ChannelInner, CreateChannel, EditChannel } from 'src/components';
 
 const ChannelContainer = ({ isCreating, setIsCreating, isEditing, setIsEditing, createType }) => {
     // The currently active channel.
-    const { channel } = useChatContext();
+    // const { channel } = useChatContext();
 
     if (isCreating) {
         return (

@@ -432,7 +432,7 @@ body {
 }
 
 .channel-list__header {
-  padding-left: 16px;
+  /* padding-left: 16px; */
   height: 62px;
 }
 
