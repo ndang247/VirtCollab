@@ -25,7 +25,7 @@ const ChannelListContent = ({ isCreating, setIsCreating, setIsEditing, setCreate
             <SideBar />
             <div className="channel-list__list__wrapper">
                 <CompanyHeader />
-                <ChannelSearch />
+                <ChannelSearch setToggleContainer={setToggleContainer} />
                 {/* Channel list for group */}
                 <ChannelList
                     filters={filters}

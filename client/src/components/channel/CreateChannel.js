@@ -1,21 +1,7 @@
 import React, { useState } from 'react';
 import { useChat, useChatContext } from 'stream-chat-react';
-import { UserList } from 'src/components';
+import { UserList, ChannelNameInput } from 'src/components';
 import { CloseCreateChannel } from 'src/assets';
-
-const ChannelNameInput = ({ channelName = '', setChannelName }) => {
-    const handleChange = (e) => {
-        e.preventDefault();
-        setChannelName(e.target.value);
-    }
-    return (
-        <div className='channel-name-input__wrapper'>
-            <p>Name</p>
-            <input value={channelName} onChange={handleChange} placeholder="channel-name" />
-            <p>Add Members</p>
-        </div>
-    );
-}
 
 const CreateChannel = ({ createType, setIsCreating }) => {
     const [channelName, setChannelName] = useState('');
@@ -24,13 +10,13 @@ const CreateChannel = ({ createType, setIsCreating }) => {
 
     const createChannel = async (e) => {
         e.preventDefault();
-        
+
         try {
             const newChannel = client.channel(createType, channelName, {
                 name: channelName, members: selectedUsers
             });
             await newChannel.watch();
-            
+
             setChannelName('');
             setIsCreating(false);
             setSelectedUsers([client.userID]);
@@ -39,6 +25,7 @@ const CreateChannel = ({ createType, setIsCreating }) => {
             console.log(error);
         }
     }
+
     return (
         <div className="create-channel__container">
             <div className="create-channel__header">
