@@ -186,6 +186,7 @@ const Auth = () => {
                     <div className="auth__form-container_fields-account">
                         <p>
                             {isSignUp ? "Already have an account?" : "Don't have an account?"}
+                            &nbsp;
                             <span onClick={switchMode}>{isSignUp ? "Sign In" : "Sign Up"}</span>
                         </p>
                     </div>
