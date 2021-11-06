@@ -1,5 +1,4 @@
 # VirtCollab
-## Demo
 ## About the project
 This is a personal side project.
 
@@ -9,4 +8,5 @@ In terminal (linux-based or macOS)
 1. cd to client directory
 2. `yarn install`
 3. `yarn start`
+## Demo
 ### https://virtcollab.netlify.app/
